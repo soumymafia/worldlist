@@ -1,0 +1,33 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto ens160
+iface ens160 inet static
+	address 172.16.121.31
+	netmask 255.255.0.0
+	network 172.16.0.0
+	broadcast 172.16.255.255
+#	up route add -net 172.16.0.0/16 gw 172.16.121.1
+#	up route add -net 172.15.0.0/16 gw 172.16.121.1
+#	up route add -net 172.20.11.48/28 gw 172.16.121.1
+	gateway 172.16.121.1
+	# dns-* options are implemented by the resolvconf package, if installed
+	#dns-nameservers 172.16.0.6 
+	#dns-search unud.ac.id
+auto ens192
+iface ens192 inet static
+        address 172.15.0.36
+#        netmask 255.255.255.0
+#        network 172.15.0.0
+#        broadcast 103.29.196.191
+#        gateway 103.29.196.161
+        dns-nameservers 103.29.196.114 103.29.196.174 8.8.8.8
+        dns-search unud.ac.id
+
